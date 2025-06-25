@@ -12,7 +12,18 @@ from offline_rag import (  # your helper module
     ask_hf_api,
 )
 
+
 app = FastAPI()
+@app.get("/", include_in_schema=False)
+async def root():
+    """
+    Lightweight health-check / landing route.
+    """
+    return {
+        "status": "ok",
+        "msg": "Offline RAG API is running 🎉  – try POST /ask",
+    }
+
 
 # an asyncio Event to signal when everything is ready
 ready: asyncio.Event = asyncio.Event()
