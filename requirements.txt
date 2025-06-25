@@ -1,12 +1,14 @@
 fastapi
 uvicorn[standard]
-torch==2.5.1          
-faiss-cpu==1.7.4  
 
-flask
-requests
-pdfplumber
-sentence-transformers
-faiss-cpu
-numpy
+# torch wheel from default index is already CPU-only on Render
+torch==2.5.1
 
+# faiss wheel that has cp311 builds
+faiss-cpu==1.7.4
+
+sentence-transformers==4.1.0
+pdfplumber==0.11.7
+requests==2.32.4
+flask==3.1.1          # only used locally; harmless here
+python-dotenv>=1.1.0  # if you read env vars from a .env later
